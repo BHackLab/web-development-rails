@@ -72,7 +72,7 @@ Vous avez un dépôt `web-development-rails` cliquez sur le bouton `Clone to edi
 
 ![Cloud9 clone to edit](images/README/c9/button-clone-to-edit.png)
 
-Vous avez le logo du Cloud9, vous disant que votre espace de travail est en cours de création.
+Vous avez le logo de Cloud9, vous disant que votre espace de travail est en cours de création.
 
 ![Cloud9 create working space](images/README/c9/loading-create-workingspace.png)
 
