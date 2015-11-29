@@ -66,17 +66,17 @@ Cliquez sur `Repositories` depuis le menu.
 
 ![Cloud9 repositories](images/README/c9/menu-repositories.png)
 
-Vous avez une liste de dépôts, qui sont lié à votre compte GitHub. Si vous n'avez rien, c'est que je n'ai pas eu votre compte GitHub pour vous rajouter au groupe.
+Vous avez une liste de dépôts, qui sont liés à votre compte GitHub. Si vous n'avez rien, c'est que je n'ai pas eu votre compte GitHub pour vous rajouter au groupe.
 
 Vous avez un dépôt `web-development-rails` cliquez sur le bouton `Clone to edit`.
 
 ![Cloud9 clone to edit](images/README/c9/button-clone-to-edit.png)
 
-Vous avez le logo du Cloud9, vous disant que votre espace et de travail est en cours de création.
+Vous avez le logo du Cloud9, vous disant que votre espace de travail est en cours de création.
 
 ![Cloud9 create working space](images/README/c9/loading-create-workingspace.png)
 
-Voilà vous avez tout ce qu'il vous faut pour commencer le cours.
+Voilà vous avez tous ce qu'il vous faut pour commencer le cours.
 
 Bonne journée.
 
