@@ -54,372 +54,295 @@
 					</aside>
 				</section>
 
-				<section id="ruby-introduction">
-					<h2>ruby</h2>
+				<section id="poo-introduction">
+					<h2>Programmation Orientée Objet</h2>
 					<h3>introduction</h3>
-					<p>1995 par <a target="_blank" href="https://en.wikipedia.org/wiki/Yukihiro_Matsumoto">Yukihiro Matsumoto</a></p>
-					<p>langage interprété</p>
-					<p>tout est objet</p>
-					<p>simple à comprendre</p>
-					<p>productif et amusant</p>
-					<aside class="notes">
-						Matz a voulu rendre les développeurs heureux de coder<br>
-						c'est pourquoi il a créé ruby<br>
-					</aside>
+          <pre><code class="ruby">
+$ git add .
+$ git commit -m 'finish 01_ruby start 02_poo'
+$ git checkout -b 02_poo 01_ruby
+$ mkdir 02_poo
+$ cd 02_poo
+            </code></pre>
 				</section>
 
 				<section>
-					<section id="ruby-bases-tests">
-						<h2>ruby</h2>
-						<h3>bases - tests</h3>
-						<pre><code class="ruby">
-"hello world"
-"hello world".class
-"hello world".upcase
-"hello world".capitalize
-11
-11.class
-11 + 4
-1.3.class
-1.3 + 2.2
-[1, 2, 3]
-[1, 2, 3].class
-[1, 2, 3].reduce(:+)
-[1, 2, 3].sample(1)
-5 / 2
-5 / 2.0
-						</code></pre>
-					</section>
+					<section id="poo-bases-instantiation">
+            <h2>poo</h2>
+            <h3>bases - instantiation</h3>
+            <pre><code class="ruby">
+String.new
+String.new("Benjamin")
+Array.new
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+class MyClass
+  def initialize
+    puts "This is the initialize method."
+  end
+end
 
-					<section id="ruby-bases-1">
-						<h2>ruby</h2>
-						<h3>bases - introduction</h3>
-						<p>IRB - Interactive Ruby</p>
-						<p>REPL - Read Evaluates Prints Loops</p>
-						<pre><code class="ruby">
-$ git checkout -b 01_ruby master
-$ mkdir 01_ruby
-$ cd 01_ruby
-$ ruby -v
-ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-linux]
-$ irb
-2.2.1 :001 > puts "Hello world!"
-Hello world!
- => nil
-2.2.1 :002 > exit
-						</code></pre>
-					</section>
+MyClass.new
+            </code></pre>
+          </section>
 
-					<section id="ruby-bases-2">
-						<h2>ruby</h2>
-						<h3>bases - 1er programme</h3>
-						<p>Ajouter un fichier hello.rb</p>
-						<pre><code class="ruby">
-puts "Hello world!"
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-$ ruby hello.rb
-Hello world!
-						</code></pre>
-					</section>
+          <section id="poo-bases-test">
+            <h2>poo</h2>
+            <h3>bases - test</h3>
+            <pre><code class="ruby">
+string = String.new
+string.methods
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+string.respond_to?("upcase")
+            </code></pre>
+          </section>
 
-					<section id="ruby-bases-3">
-						<h2>ruby</h2>
-						<h3>bases - variables et interpolations</h3>
-						<pre class="fragment"><code class="ruby">
-name = "Benjamin"
-puts "Hello"
+          <section id="poo-bases-exercice">
+            <h2>poo</h2>
+            <h3>bases - exercice</h3>
+            <p>Écrire une classe Name qui retourne, le prénom, le nom, le nom complet</p>
+            <pre class="fragment"><code class="ruby">
+class Name
+  def first_name
+    "Benjamin"
+  end
+
+  def last_name
+    "Guimberteau"
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+end
+
+name = Name.new
+puts name.first_name
+puts name.last_name
+puts name.full_name
+            </code></pre>
+          </section>
+
+          <section id="poo-bases-variables">
+            <h2>poo</h2>
+            <h3>bases - variables</h3>
+            <pre class="fragment"><code class="ruby">
+class Name
+  def initialize(first_name)
+    @first_name = first_name
+  end
+
+  def first_name
+    @first_name
+  end
+  ...
+end
+
+name = Name.new('Benjamin')
+puts name.first_name
+            </code></pre>
+          </section>
+
+          <section id="poo-bases-attributes">
+            <h2>poo</h2>
+            <h3>bases - attributs</h3>
+            <pre class="fragment"><code class="ruby">
+class Name
+  attr_reader :first_name, :last_name
+
+  def initialize(first_name, :last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+end
+
+name = Name.new('Benjamin', 'Guimberteau')
+puts name.first_name
+puts name.last_name
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+class Name
+  attr_writer :first_name, :last_name
+  ...
+end
+
+class Name
+  attr_accessor :first_name, :last_name
+  ...
+end
+            </code></pre>
+          </section>
+
+          <section id="poo-bases-attr_accessor">
+            <h2>poo</h2>
+            <h3>bases - attr_accessor</h3>
+            <pre class="fragment"><code class="ruby">
+class Name
+  attr_accessor :first_name, :last_name
+
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+  def full_name
+    "#{@first_name} #{@last_name}"
+  end
+
+  def hello
+    "Hello #{full_name}"
+  end
+end
+
+name = Name.new('Benjamin', 'Guimberteau')
+puts name.full_name
+            </code></pre>
+          </section>
+
+          <section id="poo-bases-to_s">
+            <h2>poo</h2>
+            <h3>bases - to_s</h3>
+            <pre class="fragment"><code class="ruby">
+class Name
+  attr_accessor :first_name, :last_name
+
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+  def to_s
+    "#{@first_name} #{@last_name}"
+  end
+end
+
+name = Name.new('Benjamin', 'Guimberteau')
 puts name
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-name = "Benjamin"
-puts "Hello #{name}"
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-print "Please enter your name: "
-name = gets
-puts "Hello #{name}"
-						</code></pre>
-					</section>
-
-					<section id="ruby-bases-4">
-						<h2>ruby</h2>
-						<h3>bases - exercices</h3>
-						<p>Dans IRB, créez une variable contenant une chaîne de caractères</p>
-						<p>Avec cette variable :</p>
-						<p>la mettre en majuscule</p>
-						<p>la mettre en minuscule</p>
-						<p>inverser le contenu</p>
-						<p>aide : Ruby String Documentation</p>
-					</section>
-				</section>
-
-				<section>
-					<section id="ruby-bases-5">
-						<h2>ruby</h2>
-						<h3>bases - nombres</h3>
-						<pre class="fragment"><code class="ruby">
-a = 1
-b = 2
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-a + b
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-a - b
-						</code></pre>
-					</section>
-
-					<section id="ruby-bases-6">
-						<h2>ruby</h2>
-						<h3>bases - nombres</h3>
-						<pre class="fragment"><code class="ruby">
-a = 1
-b = 2.1
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-a.class
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-b.class
-						</code></pre>
-						<pre class="fragment"><code class="ruby">
-c = a + b
-c.class
-						</code></pre>
-					</section>
-
-					<section id="ruby-bases-6">
-						<h2>ruby</h2>
-						<h3>bases - opérateurs</h3>
-						<ul>
-							<li>* (Multiplication)</li>
-							<li>/ (Division)</li>
-							<li>% (Modulo)</li>
-							<li>** (Exponentielle)</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section id="ruby-bases-7">
-            <h2>ruby</h2>
-            <h3>bases - méthodes</h3>
-            <p>Ajouter un fichier methods.rb</p>
-            <pre class="fragment"><code class="ruby">
-def add
-  puts 2 + 2
-end
             </code></pre>
+          </section>
+          <section id="poo-bases-tfn">
+            <h2>poo</h2>
+            <h3>bases - true false nil</h3>
             <pre class="fragment"><code class="ruby">
-$ ruby methods.rb
-            </code></pre>
-            <pre class="fragment"><code class="ruby">
-def add
-  puts 2 + 2
-end
-
-add
+true.class
+true.to_s
+false.class
+false.to_s
+nil.class
+nil.to_s
             </code></pre>
           </section>
 
-          <section id="ruby-bases-8">
-            <h2>ruby</h2>
-            <h3>bases - exercices</h3>
-            <p>Changer la méthode add, pour prendre 2 arguments en entrée</p>
+          <section id="poo-bases-operators">
+            <h2>poo</h2>
+            <h3>bases - operators</h3>
             <pre class="fragment"><code class="ruby">
-def add(a, b)
-  puts a + b
+true || false
+true && false
+false && true
+true || false && true
+            </code></pre>
+          </section>
+
+          <section id="poo-bases-conditional-assignment">
+            <h2>poo</h2>
+            <h3>bases - conditional assignment</h3>
+            <pre class="fragment"><code class="ruby">
+name ||= "Benjamin"
+            </code></pre>
+          </section>
+
+          <section id="poo-bases-block-1">
+            <h2>poo</h2>
+            <h3>bases - Block</h3>
+            <pre class="fragment"><code class="ruby">
+def block_method
+  puts "This is the first line in block_method."
+end
+
+block_method do
+  puts "This statement is called from the block."
 end
             </code></pre>
           </section>
-
-          <section id="ruby-bases-9">
-            <h2>ruby</h2>
-            <h3>bases - exercices</h3>
-            <p>Changer la méthode add, pour quelle retourne le résultat</p>
+          <section id="poo-bases-block-2">
+            <h2>poo</h2>
+            <h3>bases - Block yield</h3>
             <pre class="fragment"><code class="ruby">
-def add(a, b)
-  return a + b
+def block_method
+  puts "This is the before yield."
+  yield
+  puts "This is the after yield."
 end
 
-puts add(2, 3)
+block_method do
+  puts "This statement is called from the block."
+end
             </code></pre>
           </section>
-				</section>
-
-        <section>
-          <section id='ruby-operators-1'>
-            <h2>ruby</h2>
-            <h3>opérateurs - assignation</h3>
+          <section id="poo-bases-block-3">
+            <h2>poo</h2>
+            <h3>bases - Block yield arg</h3>
             <pre class="fragment"><code class="ruby">
-year = 2016
-year += 1
-year -= 1
-year /= 2
-year *= 2
-year %= 2
-year **= 2
-name = "Benjamin"
-name *= 2
+def get_name
+  print "Enter your name: "
+  name = gets.chomp
+  yield name
+end
+
+get_name do |name|
+  puts "That's a cool name, #{name}!"
+end
             </code></pre>
           </section>
-
-          <section id='ruby-operators-2'>
-            <h2>ruby</h2>
-            <h3>opérateurs - comparaison</h3>
+          <section id="poo-bases-module-1">
+            <h2>poo</h2>
+            <h3>bases - Module</h3>
+            <p>Ajouter un fichier simple_module.rb</p>
             <pre class="fragment"><code class="ruby">
-a = 10
-b = 11
+module SimpleModule
+  VERSION = 1.0
+end
+
+irb> load "./simple_module.rb"
+=> true
             </code></pre>
             <pre class="fragment"><code class="ruby">
-a == b
-a != b
-a > b
-a < b
-a >= b
+irb> SimpleModule::VERSION
+=> 1.0
+            </code></pre>
+          </section>
+          <section id="poo-bases-module-2">
+            <h2>poo</h2>
+            <h3>bases - Namespace</h3>
+            <p>Ajouter un fichier laser_bots.rb</p>
+            <pre class="fragment"><code class="ruby">
+module LaserBots
+  module Console
+    class Command
+    end
+  end
+
+  module World
+    class Player
+      attr_reader :name
+      def initialize(name)
+        @name = name
+      end
+    end
+  end
+end
+
+irb> load "./laser_bots.rb"
+=> true
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+player = LaserBots::World::Player.new("Jason")
+puts player.name
             </code></pre>
           </section>
         </section>
-
-        <section>
-          <section id="ruby-control_structures-1">
-            <h2>ruby</h2>
-            <h3>structures de contrôle - if</h3>
-            <p>Ajouter un fichier control_structures.rb</p>
-            <pre class="fragment"><code class="ruby">
-a = 10
-b = 11
-
-if a < b
-  puts "a lower than b"
-end
-
-unless a > b
-  puts "a not greater than b"
-end
-            </code></pre>
-
-          </section>
-
-          <section id="ruby-control_structures-2">
-            <h2>ruby</h2>
-            <h3>structures de contrôle - else</h3>
-            <pre class="fragment"><code class="ruby">
-print "Enter your name: "
-name = gets.chomp
-
-if name == "Benjamin"
-  puts "You are an awesome Ruby programmer!"
-else
-  puts "Hi #{name}."
-end
-
-print "Would you like to see your name backwards? (yes or no)"
-answer = gets.chomp.downcase
-
-if answer == "yes"
-  puts name.reverse
-else
-  puts "Ok, maybe later."
-end
-            </code></pre>
-
-          </section>
-
-          <section id="ruby-control_structures-3">
-            <h2>ruby</h2>
-            <h3>structures de contrôle - elsif</h3>
-            <pre class="fragment"><code class="ruby">
-print "Would you like to see your name reverse, uppercase or both? (reverse, uppercase both or no)"
-answer = gets.chomp.downcase
-
-if answer == "reverse"
-  puts "This is your name backwards:"
-  puts name.reverse
-elsif answer == "uppercase"
-  puts "This is your name in all uppercase letters:"
-  puts name.upcase
-elsif answer == "both"
-  puts name.reverse.upcase
-else
-  puts "Ok, maybe later."
-end
-            </code></pre>
-          </section>
-
-          <section id="ruby-control_structures-3">
-            <h2>ruby</h2>
-            <h3>structures de contrôle - exercices</h3>
-            <p>Utiliser la structure de contrôle case.</p>
-            <pre class="fragment"><code class="ruby">
-case answer
-when "reverse"
-  puts "This is your name backwards:"
-  puts name.reverse
-when "uppercase"
-  puts "This is your name in all uppercase letters:"
-  puts name.upcase
-when answer == "both"
-  puts name.reverse.upcase
-else
-  puts "Ok, maybe later."
-end
-            </code></pre>
-          </section>
-        </section>
-
-        <section>
-          <section id="ruby-logical_conditions-1">
-            <h2>ruby</h2>
-            <h3>conditions logique - OR et AND</h3>
-            <pre class="fragment"><code class="ruby">
-print "What is your favorite number? "
-number = gets.chomp.to_i
-
-if (number == 3) || (number == 5)
-  puts "That's my favorite number!"
-elsif (number > 10) && (number.even?)
-  puts "That's a pretty high even number!"
-elsif (number.odd?) && (number % 3 == 0)
-  puts "That number is divisible by 3 and odd, cool!"
-end
-            </code></pre>
-          </section>
-
-          <section id="ruby-logical_conditions-2">
-            <h2>ruby</h2>
-            <h3>conditions logique - négation</h3>
-            <pre class="fragment"><code class="ruby">
-print "What is your favorite number? "
-number = gets.chomp.to_i
-
-if !((number == 3) || (number == 5))
-  puts "That's not my favorite number!"
-else
-  puts "That's my favorite number!"
-end
-            </code></pre>
-          </section>
-
-          <section id="ruby-logical_conditions-2">
-            <h2>ruby</h2>
-            <h3>conditions logique - ordre</h3>
-            <ul>
-              <li>( )</li>
-              <li>!</li>
-              <li>**</li>
-              <li>% / *</li>
-              <li>+ -</li>
-            </ul>
-          </section>
-        </section>
-
-        <section id="start-poo" data-background="/images/presentations/00_intro/brHaCdJqCXijm.gif">
-          <h2>Des questions ?</h2>
-          <h3><a href="/02_poo/">Programmation Orienté Objet</a></h3>
-        </section>
-
 			</div>
 
 		</div>

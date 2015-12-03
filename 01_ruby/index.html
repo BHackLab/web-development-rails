@@ -360,7 +360,7 @@ when "reverse"
 when "uppercase"
   puts "This is your name in all uppercase letters:"
   puts name.upcase
-when answer == "both"
+when "both"
   puts name.reverse.upcase
 else
   puts "Ok, maybe later."
@@ -412,6 +412,331 @@ end
               <li>% / *</li>
               <li>+ -</li>
             </ul>
+          </section>
+        </section>
+
+        <section>
+          <section id="ruby-arrays-1">
+            <h2>ruby</h2>
+            <h3>tableaux - base</h3>
+            <pre class="fragment"><code class="ruby">
+array = Array.new
+array = Array.new(3, "Benjamin")
+array = []
+array = ["milk", "eggs", "bread"]
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+array = %w(milk eggs bread)
+
+item = “milk”
+array = %W(#{item} eggs bread)
+            </code></pre>
+          </section>
+
+          <section id="ruby-arrays-2">
+            <h2>ruby</h2>
+            <h3>tableaux - ajouts</h3>
+            <pre class="fragment"><code class="ruby">
+array = ["milk", "eggs", "bread"]
+array << "carrots"
+array.push("potatoes")
+array.unshift("celery")
+array += ["ice cream", "pie"]
+array << 1
+            </code></pre>
+          </section>
+
+          <section id="ruby-arrays-3">
+            <h2>ruby</h2>
+            <h3>tableaux - accesseurs 1</h3>
+            <pre class="fragment"><code class="ruby">
+array = ["milk", "eggs", "bread", "ice cream", "pie", "potatoes"]
+item = array[0]
+array[1]
+puts array.first
+puts array[-1]
+puts array.last
+puts array.fetch(2)
+puts array.fetch(20, "cake")
+array.length
+array.count
+array.count("eggs")
+array.include?("eggs")
+            </code></pre>
+          </section>
+
+          <section id="ruby-arrays-4">
+            <h2>ruby</h2>
+            <h3>tableaux - accesseurs 2</h3>
+            <pre class="fragment"><code class="ruby">
+array = ["milk", "eggs", "bread", "ice cream", "pie", "potatoes"]
+last_item = array.pop
+["milk", "eggs", "bread", "ice cream", "carrots"]
+first_item = array.shift
+[ "eggs", "bread", "ice cream", "carrots" ]
+ice_cream_carrots = array.drop(2)
+array = ["milk", "eggs", "bread", "ice cream", "pie", "potatoes"]
+first_three_items = array.slice(0, 3)
+["milk", "eggs", "bread"]
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section>
+          <section id="ruby-hash-1">
+            <h2>ruby</h2>
+            <h3>hash - base</h3>
+            <pre class="fragment"><code class="ruby">
+item = Hash.new
+{}
+item = { "item" => "Bread", "quantity" => 1 }
+item = { :item => "Bread", :quantity => 1 }
+item[1] = "Grocery Store"
+{ :item => "Bread", :quantity => 1, 1 => "Grocery Store" }
+item["brand"] = "Treehouse Bread Company"
+            </code></pre>
+          </section>
+
+          <section id="ruby-hash-2">
+            <h2>ruby</h2>
+            <h3>hash - ajouts</h3>
+            <pre class="fragment"><code class="ruby">
+hash = { "item" => "Bread", "quantity" => 1, "brand" => "Treehouse Bread Company" }
+hash.keys
+["item", "quantity", "brand"]
+hash.has_key?("brand")      # => true
+hash.member?("quantity")    # => true
+hash.key?("item")           # => true
+hash.store("calories", 100)
+{ "item" => "Bread", "quantity" => 1, "brand" => "Treehouse Bread Company", "calories" => 100 }
+            </code></pre>
+          </section>
+
+          <section id="ruby-hash-3">
+            <h2>ruby</h2>
+            <h3>hash - égalité</h3>
+            <pre class="fragment"><code class="ruby">
+milk = { "item" => "Milk", "quantity" => 1, "brand" => "Treehouse Dairy" }
+
+puts milk == hash     # => true
+
+bread = { "item" => "Bread", "quantity" => 1, "brand" => "Treehouse Bread Company" }
+
+puts hash == bread     # => false
+            </code></pre>
+          </section>
+
+          <section id="ruby-hash-4">
+            <h2>ruby</h2>
+            <h3>hash - valeurs</h3>
+            <pre class="fragment"><code class="ruby">
+hash = { "item" => "Bread", "quantity" => 1, "brand" => "Treehouse Bread Company" }
+hash.values
+["Bread", 1, "Treehouse Bread Company"]
+hash.has_value?("brand")
+hash.has_value?("Bread")
+hash.values_at("quantity", "brand")
+[1, "Treehouse Bread Company"]
+            </code></pre>
+          </section>
+
+          <section id="ruby-hash-5">
+            <h2>ruby</h2>
+            <h3>hash - opérateurs</h3>
+            <pre class="fragment"><code class="ruby">
+hash = { "item" => "Bread", "quantity" => 1, "brand" => "Treehouse Bread Company" }
+hash.length
+hash.invert
+{"Bread" => "item", 1 => "quantity", "Treehouse Bread Company" => "brand"}
+hash.shift
+["item", "Bread"]
+{"quantity" => 1, "brand" => "Treehouse Bread Company"}
+hash.merge({"calories" => 100})
+{"quantity" => 1, "brand" => "Treehouse Bread Company", "calories" => 100}
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section>
+          <section id="ruby-exercice">
+            <h2>ruby</h2>
+            <h3>exercice</h3>
+            <p>Écrire un programme qui va :</p>
+            <p>Demander la saisi d'un prénom</p>
+            <p>Tester si il est égal à une autre chaîne et afficher un message</p>
+            <p>Demander la saisi d'un nombre</p>
+            <p>Tester si il est divisible par 3 et afficher un message</p>
+          </section>
+
+          <section id="ruby-solution-1">
+            <h2>ruby</h2>
+            <h3>solution 1</h3>
+            <pre><code class="ruby">
+def get_name()
+  print "Enter your name: "
+  return gets.chomp
+end
+
+def greet(name)
+  print "Hi #{name}!"
+  if (name == "Benjamin")
+    puts "That's a great name!"
+  end
+end
+
+def get_number(number)
+  print "What number would you like to test to see if it is divisible by 3? "
+  return gets.chomp.to_i
+end
+            </code></pre>
+          </section>
+          <section id="ruby-solution-2">
+            <h2>ruby</h2>
+            <h3>solution 2</h3>
+            <pre><code class="ruby">
+def divisible_by_3?(number)
+  return (number % 3 == 0)
+end
+
+
+name = get_name()
+greet(name)
+number = get_number()
+
+if divisible_by_3?(number)
+  puts "Your number is divisible by 3!"
+end
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section id="ruby-loops-1">
+            <h2>ruby</h2>
+            <h3>boucle - loop</h3>
+            <pre class="fragment"><code class="ruby">
+loop do
+  print "Do you want to continue? (y/n) "
+  answer = gets.chomp.downcase
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+loop do
+  print "Do you want to continue? (y/n) "
+  answer = gets.chomp.downcase
+  if answer == "n"
+    break
+  end
+end
+            </code></pre>
+          </section>
+
+          <section id="ruby-loops-2">
+            <h2>ruby</h2>
+            <h3>boucle - while</h3>
+            <pre class="fragment"><code class="ruby">
+answer = ""
+while answer != "n"
+  print "Do you want me to repeat this pointless loop again? (y/n) "
+  answer = gets.chomp.downcase
+end
+            </code></pre>
+          </section>
+
+          <section id="ruby-loops-3">
+            <h2>ruby</h2>
+            <h3>boucle - unless</h3>
+            <pre class="fragment"><code class="ruby">
+answer = ""
+until answer == "no" do
+  print "Do you want this loop to continue? (y/n) "
+  answer = gets.chomp
+end
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section id="ruby-each-1">
+            <h2>ruby</h2>
+            <h3>each - Array</h3>
+            <pre class="fragment"><code class="ruby">
+array = [0, 1, 2, 3, 4, 5]
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+array.each do |item|
+  puts "The current array item is: #{item}"
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+array.each do |item|
+  puts "The current array item is: #{item}"
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+array.each {|item| puts "The current array item is: #{item}"}
+            </code></pre>
+            <aside class="notes">
+              <p>The do...end is called a block. The block allows in one line</p>
+            </aside>
+          </section>
+
+          <section id="ruby-each-2">
+            <h2>ruby</h2>
+            <h3>each - Hash</h3>
+            <pre class="fragment"><code class="ruby">
+array = [0, 1, 2, 3, 4, 5]
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+business.each do |key, value|
+  puts "The hash key is #{key} and the value is #{value}."
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+business.each_key do |key|
+  puts "Key: #{key}"
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+business.each_value do |value|
+  puts "Value: #{value}"
+end
+            </code></pre>
+            <aside class="notes">
+              <p>The do...end is called a block. The block allows in one line</p>
+            </aside>
+          </section>
+
+          <section id="ruby-times">
+            <h2>ruby</h2>
+            <h3>times</h3>
+            <pre class="fragment"><code class="ruby">
+5.times do
+  puts "Hello!"
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+5.times do |item|
+  puts "Hello! #{item}"
+end
+            </code></pre>
+          </section>
+
+          <section id="ruby-for">
+            <h2>ruby</h2>
+            <h3>for</h3>
+            <pre class="fragment"><code class="ruby">
+for item in 1..3 do
+  puts "The current item is #{item}."
+end
+            </code></pre>
+            <pre class="fragment"><code class="ruby">
+for item in ["Programming", "is", "fun"]
+  puts "The current item is #{item}."
+end
+            </code></pre>
           </section>
         </section>
 
