@@ -1,5 +1,24 @@
 # Groupes projet
 
+# 2017
+
+## Noham / Kevin
+Application gestion d'hôtel + réservation
+
+## Cyril / Colin
+Gestion de frigo + recette
+
+## Dorian / Pierre ?
+Configurateur automobile
+
+## Bastien / Maximilien 
+Rencontre entre chiens 
+
+## 
+Farce par courrier
+
+# 2016
+
 ## Lucas / Elsa
 
 Application pour lister les artisants et les noter
