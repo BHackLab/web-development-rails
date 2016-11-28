@@ -4,7 +4,7 @@
 
 Allez à cette URL [GitHub][GitHub], pour créer votre compte.
 
-Une fois celui-ci, créé, merci de me communiquer votre identifiant GitHub à l'email benjamin+wbr@bhacklab.fr.
+Une fois celui-ci, créé, merci de me communiquer votre identifiant GitHub à l'email benjamin+wdr@bhacklab.fr.
 
 ## Création d'un compte Cloud9
 
